@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.development2;
+package net.i09158knct.android.development;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -28,13 +28,13 @@ public class ConfigurationViewer extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        setContentView(R.layout.configuration_viewer);
+        setContentView(net.i09158knct.android.development.R.layout.configuration_viewer);
 
         Configuration c = getResources().getConfiguration();
         DisplayMetrics m = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(m);
 
-        TextView tv = (TextView)findViewById(R.id.text);
+        TextView tv = (TextView)findViewById(net.i09158knct.android.development.R.id.text);
 
         String s = "Configuration\n"
                 + "\n"

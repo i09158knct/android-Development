@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.development2;
+package net.i09158knct.android.development;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -65,27 +65,27 @@ public class PackageSummary extends Activity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        setContentView(R.layout.package_summary);
+        setContentView(net.i09158knct.android.development.R.layout.package_summary);
 
         final PackageManager pm = getPackageManager();
 
-        mPackage = (TextView)findViewById(R.id.packageView);
-        mIconImage = (ImageView)findViewById(R.id.icon);
-        mClass = (TextView)findViewById(R.id.classView);
-        mLabel = (TextView)findViewById(R.id.label);
-        mDisabled = findViewById(R.id.disabled);
-        mSystem = findViewById(R.id.system);
-        mDebuggable = findViewById(R.id.debuggable);
-        mNoCode = findViewById(R.id.nocode);
-        mPersistent = findViewById(R.id.persistent);
-        mRestart = (Button)findViewById(R.id.restart);
-        mInfo = (Button)findViewById(R.id.info);
-        mTask = (TextView)findViewById(R.id.task);
-        mVersion = (TextView)findViewById(R.id.version);
-        mUid = (TextView)findViewById(R.id.uid);
-        mProcess = (TextView)findViewById(R.id.process);
-        mSource = (TextView)findViewById(R.id.source);
-        mData = (TextView)findViewById(R.id.data);
+        mPackage = (TextView)findViewById(net.i09158knct.android.development.R.id.packageView);
+        mIconImage = (ImageView)findViewById(net.i09158knct.android.development.R.id.icon);
+        mClass = (TextView)findViewById(net.i09158knct.android.development.R.id.classView);
+        mLabel = (TextView)findViewById(net.i09158knct.android.development.R.id.label);
+        mDisabled = findViewById(net.i09158knct.android.development.R.id.disabled);
+        mSystem = findViewById(net.i09158knct.android.development.R.id.system);
+        mDebuggable = findViewById(net.i09158knct.android.development.R.id.debuggable);
+        mNoCode = findViewById(net.i09158knct.android.development.R.id.nocode);
+        mPersistent = findViewById(net.i09158knct.android.development.R.id.persistent);
+        mRestart = (Button)findViewById(net.i09158knct.android.development.R.id.restart);
+        mInfo = (Button)findViewById(net.i09158knct.android.development.R.id.info);
+        mTask = (TextView)findViewById(net.i09158knct.android.development.R.id.task);
+        mVersion = (TextView)findViewById(net.i09158knct.android.development.R.id.version);
+        mUid = (TextView)findViewById(net.i09158knct.android.development.R.id.uid);
+        mProcess = (TextView)findViewById(net.i09158knct.android.development.R.id.process);
+        mSource = (TextView)findViewById(net.i09158knct.android.development.R.id.source);
+        mData = (TextView)findViewById(net.i09158knct.android.development.R.id.data);
 
         mPackageName = getIntent().getData().getSchemeSpecificPart();
         PackageInfo info = null;
@@ -176,20 +176,20 @@ public class PackageSummary extends Activity {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-            LinearLayout permissions = (LinearLayout)findViewById(R.id.permissions);
-            LinearLayout requestedPermissions = (LinearLayout)findViewById(R.id.requestedPermissions);
-            LinearLayout activities = (LinearLayout)findViewById(R.id.activities);
-            LinearLayout receivers = (LinearLayout)findViewById(R.id.receivers);
-            LinearLayout services = (LinearLayout)findViewById(R.id.services);
-            LinearLayout providers = (LinearLayout)findViewById(R.id.providers);
-            LinearLayout instrumentation = (LinearLayout)findViewById(R.id.instrumentation);
+            LinearLayout permissions = (LinearLayout)findViewById(net.i09158knct.android.development.R.id.permissions);
+            LinearLayout requestedPermissions = (LinearLayout)findViewById(net.i09158knct.android.development.R.id.requestedPermissions);
+            LinearLayout activities = (LinearLayout)findViewById(net.i09158knct.android.development.R.id.activities);
+            LinearLayout receivers = (LinearLayout)findViewById(net.i09158knct.android.development.R.id.receivers);
+            LinearLayout services = (LinearLayout)findViewById(net.i09158knct.android.development.R.id.services);
+            LinearLayout providers = (LinearLayout)findViewById(net.i09158knct.android.development.R.id.providers);
+            LinearLayout instrumentation = (LinearLayout)findViewById(net.i09158knct.android.development.R.id.instrumentation);
 
             if (info.permissions != null) {
                 final int N = info.permissions.length;
                 for (int i=0; i<N; i++) {
                     PermissionInfo pi = info.permissions[i];
                     TextView view = (TextView)inflate.inflate(
-                            R.layout.package_item, null, false);
+                            net.i09158knct.android.development.R.layout.package_item, null, false);
                     view.setText(pi.name);
                     permissions.addView(view, lp);
                 }
@@ -202,7 +202,7 @@ public class PackageSummary extends Activity {
                 for (int i=0; i<N; i++) {
                     String p = info.requestedPermissions[i];
                     TextView view = (TextView)inflate.inflate(
-                            R.layout.package_item, null, false);
+                            net.i09158knct.android.development.R.layout.package_item, null, false);
                     view.setText(p);
                     requestedPermissions.addView(view, lp);
                 }
@@ -217,7 +217,7 @@ public class PackageSummary extends Activity {
                     // If an activity is disabled then the ActivityInfo will be null 
                     if (ai != null) {
                         TextView view = (TextView)inflate.inflate(
-                                R.layout.package_item, null, false);
+                                net.i09158knct.android.development.R.layout.package_item, null, false);
                         view.setOnClickListener(new ActivityOnClick(
                                 new ComponentName(ai.applicationInfo.packageName,
                                                   ai.name)));
@@ -234,7 +234,7 @@ public class PackageSummary extends Activity {
                 for (int i=0; i<N; i++) {
                     ActivityInfo ai = info.receivers[i];
                     TextView view = (TextView)inflate.inflate(
-                        R.layout.package_item, null, false);
+                        net.i09158knct.android.development.R.layout.package_item, null, false);
                     Log.i("foo", "Receiver #" + i + " of " + N + ": " + ai);
                     setItemText(view, info, ai.name);
                     receivers.addView(view, lp);
@@ -248,7 +248,7 @@ public class PackageSummary extends Activity {
                 for (int i=0; i<N; i++) {
                     ServiceInfo si = info.services[i];
                     TextView view = (TextView)inflate.inflate(
-                        R.layout.package_item, null, false);
+                        net.i09158knct.android.development.R.layout.package_item, null, false);
                     setItemText(view, info, si.name);
                     services.addView(view, lp);
                 }
@@ -261,7 +261,7 @@ public class PackageSummary extends Activity {
                 for (int i=0; i<N; i++) {
                     ProviderInfo pi = info.providers[i];
                     TextView view = (TextView)inflate.inflate(
-                        R.layout.package_item, null, false);
+                        net.i09158knct.android.development.R.layout.package_item, null, false);
                     setItemText(view, info, pi.name);
                     providers.addView(view, lp);
                 }
@@ -274,7 +274,7 @@ public class PackageSummary extends Activity {
                 for (int i=0; i<N; i++) {
                     InstrumentationInfo ii = info.instrumentation[i];
                     TextView view = (TextView)inflate.inflate(
-                        R.layout.package_item, null, false);
+                        net.i09158knct.android.development.R.layout.package_item, null, false);
                     setItemText(view, info, ii.name);
                     instrumentation.addView(view, lp);
                 }

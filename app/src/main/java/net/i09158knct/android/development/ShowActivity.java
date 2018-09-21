@@ -15,7 +15,7 @@
 ** limitations under the License.
 */
 
-package com.android.development2;
+package net.i09158knct.android.development;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -51,19 +51,19 @@ public class ShowActivity extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        setContentView(R.layout.show_activity);
+        setContentView(net.i09158knct.android.development.R.layout.show_activity);
 
-        mPackage = (TextView)findViewById(R.id.packageView);
-        mIconImage = (ImageView)findViewById(R.id.icon);
-        mClass = (TextView)findViewById(R.id.classView);
-        mLabel = (TextView)findViewById(R.id.label);
-        mLaunch = (TextView)findViewById(R.id.launch);
-        mProcess = (TextView)findViewById(R.id.process);
-        mTaskAffinity = (TextView)findViewById(R.id.taskAffinity);
-        mPermission = (TextView)findViewById(R.id.permission);
-        mMultiprocess = (TextView)findViewById(R.id.multiprocess);
-        mClearOnBackground = (TextView)findViewById(R.id.clearOnBackground);
-        mStateNotNeeded = (TextView)findViewById(R.id.stateNotNeeded);
+        mPackage = (TextView)findViewById(net.i09158knct.android.development.R.id.packageView);
+        mIconImage = (ImageView)findViewById(net.i09158knct.android.development.R.id.icon);
+        mClass = (TextView)findViewById(net.i09158knct.android.development.R.id.classView);
+        mLabel = (TextView)findViewById(net.i09158knct.android.development.R.id.label);
+        mLaunch = (TextView)findViewById(net.i09158knct.android.development.R.id.launch);
+        mProcess = (TextView)findViewById(net.i09158knct.android.development.R.id.process);
+        mTaskAffinity = (TextView)findViewById(net.i09158knct.android.development.R.id.taskAffinity);
+        mPermission = (TextView)findViewById(net.i09158knct.android.development.R.id.permission);
+        mMultiprocess = (TextView)findViewById(net.i09158knct.android.development.R.id.multiprocess);
+        mClearOnBackground = (TextView)findViewById(net.i09158knct.android.development.R.id.clearOnBackground);
+        mStateNotNeeded = (TextView)findViewById(net.i09158knct.android.development.R.id.stateNotNeeded);
 
         final PackageManager pm = getPackageManager();
         try {
@@ -85,34 +85,34 @@ public class ShowActivity extends Activity {
             mLabel.setText("\"" + (label != null ? label : "") + "\"");
             switch (mActivityInfo.launchMode) {
             case ActivityInfo.LAUNCH_MULTIPLE:
-                mLaunch.setText(getText(R.string.launch_multiple));
+                mLaunch.setText(getText(net.i09158knct.android.development.R.string.launch_multiple));
                 break;
             case ActivityInfo.LAUNCH_SINGLE_TOP:
-                mLaunch.setText(getText(R.string.launch_singleTop));
+                mLaunch.setText(getText(net.i09158knct.android.development.R.string.launch_singleTop));
                 break;
             case ActivityInfo.LAUNCH_SINGLE_TASK:
-                mLaunch.setText(getText(R.string.launch_singleTask));
+                mLaunch.setText(getText(net.i09158knct.android.development.R.string.launch_singleTask));
                 break;
             case ActivityInfo.LAUNCH_SINGLE_INSTANCE:
-                mLaunch.setText(getText(R.string.launch_singleInstance));
+                mLaunch.setText(getText(net.i09158knct.android.development.R.string.launch_singleInstance));
                 break;
             default:
-                mLaunch.setText(getText(R.string.launch_unknown));
+                mLaunch.setText(getText(net.i09158knct.android.development.R.string.launch_unknown));
             }
             mProcess.setText(mActivityInfo.processName);
             mTaskAffinity.setText(mActivityInfo.taskAffinity != null
-                    ? mActivityInfo.taskAffinity : getText(R.string.none));
+                    ? mActivityInfo.taskAffinity : getText(net.i09158knct.android.development.R.string.none));
             mPermission.setText(mActivityInfo.permission != null
-                    ? mActivityInfo.permission : getText(R.string.none));
+                    ? mActivityInfo.permission : getText(net.i09158knct.android.development.R.string.none));
             mMultiprocess.setText(
                     (mActivityInfo.flags&ActivityInfo.FLAG_MULTIPROCESS) != 0
-                    ? getText(R.string.yes) : getText(R.string.no));
+                    ? getText(net.i09158knct.android.development.R.string.yes) : getText(net.i09158knct.android.development.R.string.no));
             mClearOnBackground.setText(
                     (mActivityInfo.flags&ActivityInfo.FLAG_CLEAR_TASK_ON_LAUNCH) != 0
-                    ? getText(R.string.yes) : getText(R.string.no));
+                    ? getText(net.i09158knct.android.development.R.string.yes) : getText(net.i09158knct.android.development.R.string.no));
             mStateNotNeeded.setText(
                     (mActivityInfo.flags&ActivityInfo.FLAG_STATE_NOT_NEEDED) != 0
-                    ? getText(R.string.yes) : getText(R.string.no));
+                    ? getText(net.i09158knct.android.development.R.string.yes) : getText(net.i09158knct.android.development.R.string.no));
         }
     }
 

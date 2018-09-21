@@ -14,7 +14,7 @@
 ** See the License for the specific language governing permissions and 
 ** limitations under the License.
 */
-package com.android.development2;
+package net.i09158knct.android.development;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -46,7 +46,7 @@ public class DataList extends ListActivity
         if (mCursor != null) {
             setListAdapter(new SimpleCursorAdapter(
                     this,
-                    R.layout.url_list,
+                    net.i09158knct.android.development.R.layout.url_list,
                     mCursor,
                     new String[] {mDisplay},
                     new int[] {android.R.id.text1}));
@@ -120,7 +120,7 @@ public class DataList extends ListActivity
             if (mCursor != null) {
                 setListAdapter(new SimpleCursorAdapter(
                         DataList.this,
-                        R.layout.url_list,
+                        net.i09158knct.android.development.R.layout.url_list,
                         mCursor,
                         new String[] {mDisplay},
                         new int[] {android.R.id.text1}));

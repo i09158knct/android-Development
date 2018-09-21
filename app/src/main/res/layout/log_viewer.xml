@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<com.android.development2.LogTextBox xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/text"
+<net.i09158knct.android.development.LogTextBox xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     />

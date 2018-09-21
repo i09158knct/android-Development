@@ -14,7 +14,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.development2"
+    package="net.i09158knct.android.development"
     android:versionCode="1"
     android:versionName="1.0">
     <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
@@ -56,7 +56,7 @@
         <uses-library android:name="android.test.runner" />
 
         <activity
-            android:name="Development"
+            android:name=".Development"
             android:icon="@mipmap/ic_launcher_devtools"
             android:label="Dev Tools"
             android:launchMode="singleInstance">
@@ -66,7 +66,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="PackageBrowser"
+            android:name=".PackageBrowser"
             android:label="Package Browser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,10 +74,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="PackageSummary"
+            android:name=".PackageSummary"
             android:label="Package Summary"></activity>
         <activity
-            android:name="ShowActivity"
+            android:name=".ShowActivity"
             android:label="Activity Detail"></activity>
         <!--<activity android:name="AppPicker"-->
         <!--android:theme="@android:style/Theme.Dialog">-->
@@ -108,8 +108,8 @@
         <!--</intent-filter>-->
         <!--</activity>-->
 
-        <activity android:name="DataList"></activity>
-        <activity android:name="Details"></activity>
+        <activity android:name=".DataList"></activity>
+        <activity android:name=".Details"></activity>
         <!--<activity android:name="Connectivity" android:label="Connectivity" >-->
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
@@ -165,7 +165,7 @@
             </activity>
         -->
         <activity
-            android:name="AppHwPref"
+            android:name=".AppHwPref"
             android:label="Applications Hardware Preferences">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -173,10 +173,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="PermissionDetails"
+            android:name=".PermissionDetails"
             android:label="Permission Info">
             <intent-filter>
-                <action android:name="com.android.development2.VIEW_PERMISSION" />
+                <action android:name="net.i09158knct.android.development.VIEW_PERMISSION" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -189,7 +189,7 @@
         <!--</activity>-->
         <!--<receiver android:name="BadBehaviorActivity$BadReceiver">-->
         <!--<intent-filter>-->
-        <!--<action android:name="com.android.development2.BAD_BEHAVIOR" />-->
+        <!--<action android:name="net.i09158knct.android.development.BAD_BEHAVIOR" />-->
         <!--</intent-filter>-->
         <!--</receiver>-->
         <!--<service android:name="BadBehaviorActivity$BadService" />-->
@@ -202,7 +202,7 @@
         <!--</activity>-->
 
         <activity
-            android:name="ConfigurationViewer"
+            android:name=".ConfigurationViewer"
             android:label="Configuration">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

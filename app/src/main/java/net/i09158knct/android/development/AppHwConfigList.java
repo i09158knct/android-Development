@@ -15,7 +15,7 @@
 ** limitations under the License.
 */
 
-package com.android.development2;
+package net.i09158knct.android.development;
 
 import android.app.ListActivity;
 import android.content.Context;

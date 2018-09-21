@@ -16,12 +16,12 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
     android:layout_width="match_parent" android:layout_height="match_parent">          	
-    <com.android.development2.UrlEditText android:id="@+id/url_edit_text"
+    <net.i09158knct.android.development.UrlEditText android:id="@+id/url_edit_text"
         android:textSize="13sp"
         android:autoText="false"
         android:capitalize="none"
         android:layout_width="match_parent" android:layout_height="wrap_content"/>
-    <com.android.development2.DisplayEditText android:id="@+id/display_edit_text"
+    <net.i09158knct.android.development.DisplayEditText android:id="@+id/display_edit_text"
         android:textSize="13sp"
         android:autoText="false"
         android:capitalize="none"

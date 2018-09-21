@@ -15,34 +15,20 @@
 ** limitations under the License.
 */
 
-package com.android.development2;
+package net.i09158knct.android.development;
 
-import com.android.development2.R;
 import android.app.Activity;
-import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ConfigurationInfo;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.LayoutInflater;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+
 import java.util.HashSet;
-import java.util.List;
 
 /* This activity displays the hardware configuration details
  * of an application as defined in its manifests
@@ -78,15 +64,15 @@ public class AppHwPref extends Activity {
         }
         ConfigurationInfo appHwPref[] = pInfo.configPreferences;
         
-        setContentView(R.layout.application_hw_pref);
+        setContentView(net.i09158knct.android.development.R.layout.application_hw_pref);
         if(appHwPref != null) {
-            displayTextView(R.id.attr_package, pInfo.applicationInfo.loadLabel(mPm));
-            displayTextView(R.id.attr_touchscreen, appHwPref, TOUCHSCREEN);
-            displayTextView(R.id.attr_input_method, appHwPref, KEYBOARD_TYPE);
-            displayTextView(R.id.attr_navigation, appHwPref, NAVIGATION);
-            displayFlag(R.id.attr_hard_keyboard, ConfigurationInfo.INPUT_FEATURE_HARD_KEYBOARD, appHwPref);
-            displayFlag(R.id.attr_five_way_nav, ConfigurationInfo.INPUT_FEATURE_FIVE_WAY_NAV, appHwPref);
-           displayTextView(R.id.attr_gles_version, appHwPref, GLES_VERSION);
+            displayTextView(net.i09158knct.android.development.R.id.attr_package, pInfo.applicationInfo.loadLabel(mPm));
+            displayTextView(net.i09158knct.android.development.R.id.attr_touchscreen, appHwPref, TOUCHSCREEN);
+            displayTextView(net.i09158knct.android.development.R.id.attr_input_method, appHwPref, KEYBOARD_TYPE);
+            displayTextView(net.i09158knct.android.development.R.id.attr_navigation, appHwPref, NAVIGATION);
+            displayFlag(net.i09158knct.android.development.R.id.attr_hard_keyboard, ConfigurationInfo.INPUT_FEATURE_HARD_KEYBOARD, appHwPref);
+            displayFlag(net.i09158knct.android.development.R.id.attr_five_way_nav, ConfigurationInfo.INPUT_FEATURE_FIVE_WAY_NAV, appHwPref);
+           displayTextView(net.i09158knct.android.development.R.id.attr_gles_version, appHwPref, GLES_VERSION);
         }
     }
     

@@ -15,9 +15,7 @@
 ** limitations under the License.
 */
 
-package com.android.development2;
-
-import com.android.development2.R;
+package net.i09158knct.android.development;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -44,7 +42,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -121,12 +118,12 @@ public class PermissionDetails extends Activity implements OnCancelListener, OnI
             // to reinflate it. We only inflate a new View when the convertView supplied
             // by ListView is null.
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.pkg_list_item, null);
+                convertView = mInflater.inflate(net.i09158knct.android.development.R.layout.pkg_list_item, null);
 
                 // Creates a ViewHolder and store references to the two children views
                 // we want to bind data to.
                 holder = new AppViewHolder();
-                holder.pkgName = (TextView) convertView.findViewById(R.id.pkg_name);
+                holder.pkgName = (TextView) convertView.findViewById(net.i09158knct.android.development.R.id.pkg_name);
                 convertView.setTag(holder);
             } else {
                 // Get the ViewHolder back to get fast access to the TextView
@@ -182,7 +179,7 @@ public class PermissionDetails extends Activity implements OnCancelListener, OnI
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.permission_details);
+        setContentView(net.i09158knct.android.development.R.layout.permission_details);
         Intent intent = getIntent();
         String permName = intent.getStringExtra("permission");
         if(permName == null) {
@@ -197,27 +194,27 @@ public class PermissionDetails extends Activity implements OnCancelListener, OnI
         } catch (NameNotFoundException e) {
             showDialogInner(DLG_ERROR);
         }
-        setTextView(R.id.perm_name, pInfo.name);
-        setTextView(R.id.perm_desc, pInfo.descriptionRes);
-        setTextView(R.id.perm_group, pInfo.group);
-        setProtectionLevel(R.id.perm_protection, pInfo.protectionLevel);
-        setTextView(R.id.perm_source, pInfo.packageName);
+        setTextView(net.i09158knct.android.development.R.id.perm_name, pInfo.name);
+        setTextView(net.i09158knct.android.development.R.id.perm_desc, pInfo.descriptionRes);
+        setTextView(net.i09158knct.android.development.R.id.perm_group, pInfo.group);
+        setProtectionLevel(net.i09158knct.android.development.R.id.perm_protection, pInfo.protectionLevel);
+        setTextView(net.i09158knct.android.development.R.id.perm_source, pInfo.packageName);
         ApplicationInfo appInfo = null;
         try {
             appInfo =  mPm.getApplicationInfo(pInfo.packageName, 0);
             String uidStr = mPm.getNameForUid(appInfo.uid);
-            setTextView(R.id.source_uid, uidStr);
+            setTextView(net.i09158knct.android.development.R.id.source_uid, uidStr);
         } catch (NameNotFoundException e) {
         }
         boolean sharedVisibility = false;
         // List of apps acquiring access via shared user id
-        LinearLayout sharedPanel = (LinearLayout) findViewById(R.id.shared_pkgs_panel);
+        LinearLayout sharedPanel = (LinearLayout) findViewById(net.i09158knct.android.development.R.id.shared_pkgs_panel);
         if (appInfo != null) {
             String[] sharedList = mPm.getPackagesForUid(appInfo.uid);
             if ((sharedList != null) && (sharedList.length > 1)) {
                 sharedVisibility = true;
-                TextView label = (TextView) sharedPanel.findViewById(R.id.shared_pkgs_label);
-                TextView sharedView = (TextView) sharedPanel.findViewById(R.id.shared_pkgs);
+                TextView label = (TextView) sharedPanel.findViewById(net.i09158knct.android.development.R.id.shared_pkgs_label);
+                TextView sharedView = (TextView) sharedPanel.findViewById(net.i09158knct.android.development.R.id.shared_pkgs);
                 label.setVisibility(View.VISIBLE);
                 StringBuilder buff = new StringBuilder();
                 buff.append(sharedList[0]);
@@ -266,12 +263,12 @@ public class PermissionDetails extends Activity implements OnCancelListener, OnI
     public Dialog onCreateDialog(int id) {
         if (id == DLG_ERROR) {
             return new AlertDialog.Builder(this)
-            .setTitle(R.string.dialog_title_error)
-            .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
+            .setTitle(net.i09158knct.android.development.R.string.dialog_title_error)
+            .setNeutralButton(net.i09158knct.android.development.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
                 }})
-            .setMessage(R.string.invalid_perm_name)
+            .setMessage(net.i09158knct.android.development.R.string.invalid_perm_name)
             .setOnCancelListener(this)
             .create();
         }

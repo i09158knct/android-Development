@@ -14,7 +14,7 @@
 ** limitations under the License.
 */
 
-package com.android.development2;
+package net.i09158knct.android.development;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -44,10 +44,10 @@ public class LogViewer extends Activity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.log_viewer);
+        setContentView(net.i09158knct.android.development.R.layout.log_viewer);
         this.handler = new Handler();
 
-        text = (LogTextBox) findViewById(R.id.text);
+        text = (LogTextBox) findViewById(net.i09158knct.android.development.R.id.text);
 
         text.setTextSize(10);
         text.setHorizontallyScrolling(true);

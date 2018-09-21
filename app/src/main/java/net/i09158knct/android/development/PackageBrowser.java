@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.android.development2;
+package net.i09158knct.android.development;
 
-import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,14 +23,11 @@ import android.content.IntentFilter;
 import android.content.BroadcastReceiver;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.os.Handler;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -63,7 +59,7 @@ public class PackageBrowser extends ListActivity {
     public class PackageListAdapter extends ArrayAdapter<MyPackageInfo> {
 
         public PackageListAdapter(Context context) {
-            super(context, R.layout.package_list_item);
+            super(context, net.i09158knct.android.development.R.layout.package_list_item);
             List<PackageInfo> pkgs = context.getPackageManager().getInstalledPackages(0);
             for (int i=0; i<pkgs.size(); i++) {
                 MyPackageInfo info = new MyPackageInfo();
@@ -81,9 +77,9 @@ public class PackageBrowser extends ListActivity {
     
         @Override
         public void bindView(View view, MyPackageInfo info) {
-            ImageView icon = (ImageView)view.findViewById(R.id.icon);
-            TextView name = (TextView)view.findViewById(R.id.name);
-            TextView description = (TextView)view.findViewById(R.id.description);
+            ImageView icon = (ImageView)view.findViewById(net.i09158knct.android.development.R.id.icon);
+            TextView name = (TextView)view.findViewById(net.i09158knct.android.development.R.id.name);
+            TextView description = (TextView)view.findViewById(net.i09158knct.android.development.R.id.description);
             icon.setImageDrawable(info.info.applicationInfo.loadIcon(getPackageManager()));
             name.setText((info.isSystemApp ? "*" : "") +  info.label);
 
