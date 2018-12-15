@@ -23,6 +23,7 @@ import android.content.IntentFilter;
 import android.content.BroadcastReceiver;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ public class PackageBrowser extends ListActivity {
         String label;
         boolean enabled;
         boolean isSystemApp;
+        boolean removed;
 
         public int getWeight() {
             return (enabled ? 10 : 0) + (isSystemApp ? 0 : 1);
@@ -74,7 +77,7 @@ public class PackageBrowser extends ListActivity {
             }
             setSource(mPackageInfoList);
         }
-    
+
         @Override
         public void bindView(View view, MyPackageInfo info) {
             ImageView icon = (ImageView)view.findViewById(net.i09158knct.android.development.R.id.icon);
@@ -85,6 +88,9 @@ public class PackageBrowser extends ListActivity {
 
             if (!info.enabled) {
                 view.setBackgroundColor(0x88888888);
+            }
+            else if (info.removed) {
+                view.setBackgroundColor(0x88ff5555);
             }
             else {
                 view.setBackgroundColor(Color.TRANSPARENT);
@@ -102,7 +108,74 @@ public class PackageBrowser extends ListActivity {
         public void onReceive(Context context, Intent intent) {
             // todo: this is a bit brute force.  We should probably get the action and package name
             //       from the intent and just add to or delete from the mPackageInfoList
-            setupAdapter();
+
+            String action = intent.getAction();
+            if (action == null) return;
+            String packageName = intent.getDataString();
+            if (packageName == null) return;
+            String[] split = packageName.split(":");
+            packageName = split[split.length - 1];
+
+            MyPackageInfo targetItem = null;
+            for (int i = 0; i < mPackageInfoList.size(); i++) {
+                MyPackageInfo item =mPackageInfoList.get(i);
+                if (packageName.equals(item.info.packageName)) {
+                    targetItem = item;
+                    break;
+                }
+            }
+
+            if (action.equals(Intent.ACTION_PACKAGE_ADDED)){
+                if (targetItem != null) {
+                    targetItem.removed = false;
+                }
+                else {
+                    MyPackageInfo info = new MyPackageInfo();
+                    PackageInfo pkg = null;
+                    try {
+                        pkg = context.getPackageManager().getPackageInfo(packageName, 0);
+                        if (pkg == null) return;
+                    } catch (PackageManager.NameNotFoundException e) {
+                        e.printStackTrace();
+                        return;
+                    }
+                    info.info = pkg;
+                    info.label = info.info.applicationInfo.loadLabel(getPackageManager()).toString();
+                    info.enabled = info.info.applicationInfo.enabled;
+                    info.isSystemApp = (info.info.applicationInfo.flags& ApplicationInfo.FLAG_SYSTEM) != 0;
+                    mPackageInfoList.add(info);
+                }
+                mAdapter.notifyDataSetChanged();
+                Toast.makeText(context, "List Updated\n" + action + "\n" + packageName, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (targetItem == null){
+                return;
+            }
+
+            if (action.equals(Intent.ACTION_PACKAGE_CHANGED)){
+                PackageInfo pkg = null;
+                try {
+                    pkg = context.getPackageManager().getPackageInfo(packageName, 0);
+                    if (pkg == null) return;
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                    return;
+                }
+                targetItem.info = pkg;
+                targetItem.enabled = pkg.applicationInfo.enabled;
+                mAdapter.notifyDataSetChanged();
+                Toast.makeText(context, "List Updated\n" + action + "\n" + packageName, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (action.equals(Intent.ACTION_PACKAGE_REMOVED)) {
+                targetItem.removed = true;
+                mAdapter.notifyDataSetChanged();
+                Toast.makeText(context, "List Updated\n" + action + "\n" + packageName, Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
     }
 
